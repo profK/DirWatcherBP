@@ -24,15 +24,15 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Added", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
-	void RecieveActorOnFileAdded(FString path);
+	void RecieveActorOnFileAdded(const FString& path);
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Removed", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
-	void RecieveActorOnFileRemoved(FString path);
+	void RecieveActorOnFileRemoved(const FString& path);
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Modified", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
-	void RecieveActorOnFileModified(FString path, FDateTime when);
+	void RecieveActorOnFileModified(const FString& path,const FDateTime& when);
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Moved", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
-	void RecieveActorOnFileMoved(FString oldPath, FString newPath);
+	void RecieveActorOnFileMoved(const FString& oldPath,const FString& newPath);
 
 };
