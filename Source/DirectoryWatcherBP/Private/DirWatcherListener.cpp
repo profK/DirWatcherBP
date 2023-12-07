@@ -26,26 +26,27 @@ void ADirWatcherListener::Tick(float DeltaTime)
 }
 
 
-void ADirWatcherListener::handleFileAction(efsw::WatchID watchid, const std::string& dir, const std::string& filename,
-	efsw::Action action, std::string oldFilename)
+void ADirWatcherListener::handleFileAction(WatchID watchid, const std::string& dir, const std::string& filename,
+	Action action, std::string oldFilename)
 {
-	
+	std::string dirstr(dir);
+	dirstr = dirstr.append("/").append(filename);
+	const FString Path(dirstr.c_str());
+	const FString OldPath(
+			std::string(dir).append("/").append(oldFilename).c_str());
 	switch ( action ) {
-	case efsw::Actions::Add:
-		std::cout << "DIR (" << dir << ") FILE (" << filename << ") has event Added"
-				  << std::endl;
+	case Actions::Add:
+		RecieveActorOnFileAdded(Path);
 		break;
-	case efsw::Actions::Delete:
-		std::cout << "DIR (" << dir << ") FILE (" << filename << ") has event Delete"
-				  << std::endl;
+	case Actions::Delete:
+		RecieveActorOnFileRemoved(Path);
 		break;
-	case efsw::Actions::Modified:
-		std::cout << "DIR (" << dir << ") FILE (" << filename << ") has event Modified"
-				  << std::endl;
+	case Actions::Modified:
+		RecieveActorOnFileModified(Path,FDateTime());
 		break;
-	case efsw::Actions::Moved:
-		std::cout << "DIR (" << dir << ") FILE (" << filename << ") has event Moved from ("
-				  << oldFilename << ")" << std::endl;
+	case Actions::Moved:
+		
+		RecieveActorOnFileMoved(OldPath,Path);
 		break;
 	default:
 		std::cout << "Should never happen!" << std::endl;
