@@ -20,7 +20,7 @@ void FDirectoryWatcherBPModule::ShutdownModule()
 
 bool FDirectoryWatcherBPModule::WatchDirectory(FString Path)
 {
-	
+	return false;
 }
 
 #undef LOCTEXT_NAMESPACE
