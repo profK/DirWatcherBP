@@ -20,6 +20,9 @@ public:
 	ADirWatcherListener();
 
 protected:
+	std::unique_ptr<FileWatcher> dirWatcher =
+		std::make_unique<FileWatcher>();
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -39,6 +42,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Moved", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
 	void RecieveActorOnFileMoved(const FString& oldPath,const FString& newPath);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DirectoryWatcherBP")
+	FString watchedPath;
+	
 	virtual void handleFileAction(WatchID watchid, const std::string& dir,
 		const std::string& filename,
 		Action action, std::string oldFilename) override;

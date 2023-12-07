@@ -15,7 +15,8 @@ ADirWatcherListener::ADirWatcherListener()
 void ADirWatcherListener::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	std::string dpath(TCHAR_TO_UTF8(*(this->watchedPath)));
+	dirWatcher->addWatch(dpath,this);
 }
 
 // Called every frame
