@@ -2,12 +2,16 @@
 
 #pragma once
 
+#include "efsw.h"
 #include "CoreMinimal.h"
+#include "efsw.hpp"
 #include "GameFramework/Actor.h"
 #include "DirWatcherListener.generated.h"
 
+using namespace efsw;
+
 UCLASS()
-class ADirWatcherListener : public AActor
+class ADirWatcherListener : public AActor, public FileWatchListener
 {
 	GENERATED_BODY()
 	
@@ -35,4 +39,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "File Moved", Keywords = "DirectoryWatcherBP listener change event"), Category = "DirectoryWatcherBP")
 	void RecieveActorOnFileMoved(const FString& oldPath,const FString& newPath);
 
+	virtual void handleFileAction(WatchID watchid, const std::string& dir,
+		const std::string& filename,
+		Action action, std::string oldFilename) override;
 };
