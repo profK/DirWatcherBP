@@ -11,7 +11,7 @@ Usage:
 This plugin adds a new kind of actor called a DirWatcherListener that has a "Watched Directory" property and 4 new events.
 To use, create a blueprint subclass of DirWatcherListener and set the Watched Directory.  Such subclasses will have
 add itional event nodes automatically added to the node list called "Event File Added", "Event File Removed", "Event File Moved",
-and "Event File Modified".  For the semantics of these events, see the efsw docs at ttps://github.com/SpartanJ/efsw.
+and "Event File Modified".  For the semantics of these events, see the efsw docs at https://github.com/SpartanJ/efsw.
 
 
 IMPORTANT LIMITATIONS:
