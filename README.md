@@ -17,7 +17,7 @@ and "Event File Modified".  For the semantics of these events, see the efsw docs
 IMPORTANT LIMITATIONS:
 * Currently the Watched Directory must either be set as a default or in the Begin Play event. Changing it later has no effect.
 * Currently only Windows is supported. Some minor build work must be done to support other platforms.
-* When a file is changed, the modified time is the tim the event is recieved as I have not yet found a cross-platform way to read this from the operating system.
+* When a file is changed, the modified time is the time the event is recieved as I have not yet found a cross-platform way to read this from the operating system.
 
 Other projects included:
 This Plugin uses the open source efsw file watching library. It is built seperately for each platform and  included as
